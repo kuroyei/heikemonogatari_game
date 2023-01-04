@@ -21,7 +21,42 @@ class Result extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("正答数 $result / $questionNumber"),
+              Padding(
+                padding: EdgeInsets.only(bottom: 30),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "正答数",
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      )
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          "$result",
+                          style: TextStyle(
+                            fontSize: 60,
+                          )
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Text(
+                            "/ $questionNumber",
+                            style: TextStyle(
+                              fontSize: 20,
+                            )
+                          ),
+                        ),
+                      ]
+                    )
+                  ],
+                ),
+              ),
               ElevatedButton(
                 onPressed: () async {
                   await goToTop(context);
