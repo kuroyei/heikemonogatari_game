@@ -6,7 +6,7 @@ import 'package:heikemonogatari_game/questionItem/questionItem.dart';
 import 'package:heikemonogatari_game/view/result_page.dart';
 
 class GamePage extends StatefulWidget {
-  GamePage({Key? key}) : super(key: key);
+  const GamePage({Key? key}) : super(key: key);
 
 
   @override
@@ -43,13 +43,14 @@ class GamePageState extends State<GamePage> {
       result++;
     }
 
-    await Future.delayed(audioPlayer.duration ?? Duration(seconds: 0));
+    await Future.delayed(audioPlayer.duration ?? const Duration(seconds: 0));
     isSelectNow = true;
     setState(() {});
     index++;
     if(index == questions.length){
       stopwatch.stop();
       // print("${stopwatch.elapsed}");
+      // ignore: use_build_context_synchronously
       await goToResult(context);
     }
     setState(() {});
@@ -68,57 +69,54 @@ class GamePageState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     choices = questions[index].choices;
     // choices.shuffle();
     audioPlayer = AudioPlayer()..setAsset("assets/${questions[index].audioFilePath}");
     return Scaffold(
       appBar: AppBar(
-        title: Text("平家物語ゲーム"),
+        title: const Text("平家物語ゲーム"),
       ),
       body: Column(
         children: [
           Expanded(
-            child: Container(
-              child: Scrollbar(
-                child: ListView.separated(
-                  padding: EdgeInsets.all(5),
-                  itemBuilder: (BuildContext context, int _index) {
-                    return Card(
-                      child: ListTile(
-                        title: Text(choices[_index]),
-                        onTap: () {
-                          audioPlayer.play();
-                          if (!isSelectNow) return;
-                          answered = choices[_index];
-                          updateQuestion(context, choices[_index]);
-                        },
-                        tileColor: isSelectNow 
-                          ? null 
-                          : (choices[_index] == answered)
-                              ? (questions[index].answer == choices[_index]) 
-                                  ? Colors.blue 
-                                  : Colors.red
-                              : null
-                          
-                      ),
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(height: 0.1);
-                  },
-                  itemCount: choices.length,
-                )
-              ),
+            child: Scrollbar(
+              child: ListView.separated(
+                padding: const EdgeInsets.all(5),
+                itemBuilder: (BuildContext context, int i) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(choices[i]),
+                      onTap: () {
+                        audioPlayer.play();
+                        if (!isSelectNow) return;
+                        answered = choices[i];
+                        updateQuestion(context, choices[i]);
+                      },
+                      tileColor: isSelectNow 
+                        ? null 
+                        : (choices[i] == answered)
+                            ? (questions[index].answer == choices[i]) 
+                                ? Colors.blue 
+                                : Colors.red
+                            : null
+                        
+                    ),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(height: 0.1);
+                },
+                itemCount: choices.length,
+              )
             )
           ),
           Padding(
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
+              borderRadius: const BorderRadius.all(Radius.circular(30)),
               child: LinearProgressIndicator(
                 backgroundColor: Colors.grey,
-                valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),
+                valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
                 minHeight: 30,
                 value: index/questionItem.length,
               )

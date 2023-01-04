@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:heikemonogatari_game/model/question.dart';
 
 final questionItem = {

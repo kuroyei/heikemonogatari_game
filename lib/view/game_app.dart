@@ -4,14 +4,14 @@ import 'package:heikemonogatari_game/view/game_page.dart';
 import 'package:heikemonogatari_game/util/browser.dart';
 
 class GameApp extends StatelessWidget {
-  GameApp({Key? key}) : super(key: key);
+  const GameApp({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("平家物語ゲーム"),
+        title: const Text("平家物語ゲーム"),
       ),
       body: Stack(
         children: [
@@ -23,10 +23,10 @@ class GameApp extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   colorFilter: ColorFilter.mode(
-                    Color(0xFFFAFAFA).withOpacity(0.4),
+                    const Color(0xFFFAFAFA).withOpacity(0.4),
                     BlendMode.dstATop
                   ),
-                  image: AssetImage("assets/bg-game_app.png"),
+                  image: const AssetImage("assets/bg-game_app.png"),
                   alignment: Alignment.bottomLeft,
                   fit: BoxFit.contain,
                 )
@@ -44,7 +44,7 @@ class GameApp extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context, 
-                          MaterialPageRoute(builder: (context) => GamePage())
+                          MaterialPageRoute(builder: (context) => const GamePage())
                         );
                       },
                       child: const Text("すたーと！"),
@@ -53,18 +53,19 @@ class GameApp extends StatelessWidget {
                 )
               ),
               Padding(
-                padding: EdgeInsets.all(30),
+                padding: const EdgeInsets.all(30),
                 child: GestureDetector(
                   onTap: () {
                     Browser.open("https://github.com/kuroyei/heikemonogatari_game");
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      Icon(FontAwesomeIcons.github),
-                      Padding(
+                      const Icon(FontAwesomeIcons.github),
+                      const Padding(
                         padding: EdgeInsets.only(left: 10),
-                        child: const Text("ぎっとはぶ")
+                        child: Text("ぎっとはぶ")
                       )
                     ],
                   ),

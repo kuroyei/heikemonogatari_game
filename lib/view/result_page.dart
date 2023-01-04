@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Result extends StatelessWidget {
   Result(this.result, this.questionNumber, this.time, {Key? key}) : super(key: key);
   int result;
   int questionNumber;
   Stopwatch time;
-
-
 
   Future<void> goToTop(BuildContext context) async {
     Navigator.popUntil(context, (route) => route.isFirst);
@@ -27,13 +26,12 @@ class Result extends StatelessWidget {
     } else {
       bgImagePath = "assets/bg-result_page-00.png";
     }
-    print("$result, $questionNumber, $correctAnswersRate");
 
     return WillPopScope( 
       onWillPop: () async => false,
       child:Scaffold(
         appBar: AppBar(
-          title: Text("平家物語ゲーム"),
+          title: const Text("平家物語ゲーム"),
         ),
         body: Stack(
           children: [
@@ -45,7 +43,7 @@ class Result extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     colorFilter: ColorFilter.mode(
-                      Color(0xFFFAFAFA).withOpacity(0.4),
+                      const Color(0xFFFAFAFA).withOpacity(0.4),
                       BlendMode.dstATop
                     ),
                     image: AssetImage(bgImagePath),
@@ -60,11 +58,11 @@ class Result extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(bottom: 30),
+                    padding: const EdgeInsets.only(bottom: 30),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "正答数",
                           style: TextStyle(
                             fontSize: 40,
@@ -77,15 +75,15 @@ class Result extends StatelessWidget {
                           children: [
                             Text(
                               "$result",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 60,
                               )
                             ),
                             Padding(
-                              padding: EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.only(left: 10),
                               child: Text(
                                 "/ $questionNumber",
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 20,
                                 )
                               ),
@@ -96,11 +94,11 @@ class Result extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 30),
+                    padding: const EdgeInsets.only(bottom: 30),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           "タイム",
                           style: TextStyle(
                             fontSize: 40,
@@ -113,11 +111,11 @@ class Result extends StatelessWidget {
                           children: [
                             Text(
                               "${time.elapsedMilliseconds ~/ 1000}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 60,
                               )
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.only(left: 10),
                               child: Text(
                                 "秒",
