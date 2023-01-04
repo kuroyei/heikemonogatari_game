@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:heikemonogatari_game/model/question.dart';
@@ -17,6 +18,8 @@ class GamePageState extends State<GamePage> {
   int result = 0;
   bool isSelectNow = true;
   late String answered;
+
+  Stopwatch stopwatch = Stopwatch();
   
   List<Question> questions = questionItem.entries.map((e) => e.value).toList();
   late List<String> choices;
@@ -28,6 +31,7 @@ class GamePageState extends State<GamePage> {
       questions[i].choices.shuffle();
     }
     super.initState();
+    stopwatch.start();
   }
 
   Future<void> updateQuestion(BuildContext context, String selectAnswer) async {
@@ -44,6 +48,8 @@ class GamePageState extends State<GamePage> {
     setState(() {});
     index++;
     if(index == questions.length){
+      stopwatch.stop();
+      // print("${stopwatch.elapsed}");
       await goToResult(context);
     }
     setState(() {});
@@ -53,7 +59,7 @@ class GamePageState extends State<GamePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Result(result, questions.length)
+        builder: (context) => Result(result, questions.length, stopwatch)
       )
     );
   }

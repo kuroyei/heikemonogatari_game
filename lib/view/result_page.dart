@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  Result(this.result, this.questionNumber, {Key? key}) : super(key: key);
+  Result(this.result, this.questionNumber, this.time, {Key? key}) : super(key: key);
   int result;
   int questionNumber;
+  Stopwatch time;
 
 
 
@@ -13,7 +14,7 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int correctAnswersRate = result ~/ questionNumber * 100;
+    int correctAnswersRate = (result / questionNumber) *100 ~/ 1;
     String bgImagePath;
     if(correctAnswersRate >= 90) {
       bgImagePath = "bg-result_page-90.png";  
@@ -26,6 +27,7 @@ class Result extends StatelessWidget {
     } else {
       bgImagePath = "bg-result_page-00.png";
     }
+    print("$result, $questionNumber, $correctAnswersRate");
 
     return WillPopScope( 
       onWillPop: () async => false,
@@ -89,9 +91,45 @@ class Result extends StatelessWidget {
                               ),
                             ),
                           ]
-                        )
+                        ),
                       ],
                     ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 30),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "タイム",
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          )
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "${time.elapsedMilliseconds ~/ 1000}",
+                              style: TextStyle(
+                                fontSize: 60,
+                              )
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 10),
+                              child: Text(
+                                "秒",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                )
+                              )
+                            )
+                          ],
+                        )
+                      ],
+                    )
                   ),
                   ElevatedButton(
                     onPressed: () async {
