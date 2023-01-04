@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:heikemonogatari_game/view/game_page.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:heikemonogatari_game/util/browser.dart';
 
 class GameApp extends StatelessWidget {
   GameApp({Key? key}) : super(key: key);
@@ -56,7 +56,7 @@ class GameApp extends StatelessWidget {
                 padding: EdgeInsets.all(30),
                 child: GestureDetector(
                   onTap: () {
-                    launchUrl(Uri.parse("https://github.com/kuroyei/heikemonogatari_game"));
+                    Browser.open("https://github.com/kuroyei/heikemonogatari_game");
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
