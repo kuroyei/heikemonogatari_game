@@ -17,15 +17,15 @@ class Result extends StatelessWidget {
     int correctAnswersRate = (result / questionNumber) *100 ~/ 1;
     String bgImagePath;
     if(correctAnswersRate >= 90) {
-      bgImagePath = "bg-result_page-90.png";  
+      bgImagePath = "assets/bg-result_page-90.png";  
     } else if(correctAnswersRate >= 80) {
-      bgImagePath = "bg-result_page-80.png";
+      bgImagePath = "assets/bg-result_page-80.png";
     } else if(correctAnswersRate >= 60) {
-      bgImagePath = "bg-result_page-60.png";
+      bgImagePath = "assets/bg-result_page-60.png";
     } else if(correctAnswersRate >= 30) {
-      bgImagePath = "bg-result_page-30.png";
+      bgImagePath = "assets/bg-result_page-30.png";
     } else {
-      bgImagePath = "bg-result_page-00.png";
+      bgImagePath = "assets/bg-result_page-00.png";
     }
     print("$result, $questionNumber, $correctAnswersRate");
 

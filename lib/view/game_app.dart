@@ -26,7 +26,7 @@ class GameApp extends StatelessWidget {
                     Color(0xFFFAFAFA).withOpacity(0.4),
                     BlendMode.dstATop
                   ),
-                  image: AssetImage("bg-game_app.png"),
+                  image: AssetImage("assets/bg-game_app.png"),
                   alignment: Alignment.bottomLeft,
                   fit: BoxFit.contain,
                 )
