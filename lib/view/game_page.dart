@@ -43,7 +43,7 @@ class GamePageState extends State<GamePage> {
       result++;
     }
 
-    await Future.delayed(audioPlayer.duration ?? const Duration(seconds: 0));
+    await Future.delayed(audioPlayer.duration ?? const Duration(seconds: 2));
     isSelectNow = true;
     setState(() {});
     index++;
