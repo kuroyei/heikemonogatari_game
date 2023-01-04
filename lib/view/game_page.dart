@@ -70,37 +70,55 @@ class GamePageState extends State<GamePage> {
       appBar: AppBar(
         title: Text("平家物語ゲーム"),
       ),
-      body: Container(
-        child: Scrollbar(
-          child: ListView.separated(
-            padding: EdgeInsets.all(5),
-            itemBuilder: (BuildContext context, int _index) {
-              return Card(
-                child: ListTile(
-                  title: Text(choices[_index]),
-                  onTap: () {
-                    audioPlayer.play();
-                    if (!isSelectNow) return;
-                    answered = choices[_index];
-                    updateQuestion(context, choices[_index]);
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              child: Scrollbar(
+                child: ListView.separated(
+                  padding: EdgeInsets.all(5),
+                  itemBuilder: (BuildContext context, int _index) {
+                    return Card(
+                      child: ListTile(
+                        title: Text(choices[_index]),
+                        onTap: () {
+                          audioPlayer.play();
+                          if (!isSelectNow) return;
+                          answered = choices[_index];
+                          updateQuestion(context, choices[_index]);
+                        },
+                        tileColor: isSelectNow 
+                          ? null 
+                          : (choices[_index] == answered)
+                              ? (questions[index].answer == choices[_index]) 
+                                  ? Colors.blue 
+                                  : Colors.red
+                              : null
+                          
+                      ),
+                    );
                   },
-                  tileColor: isSelectNow 
-                    ? null 
-                    : (choices[_index] == answered)
-                        ? (questions[index].answer == choices[_index]) 
-                            ? Colors.blue 
-                            : Colors.red
-                        : null
-                    
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(height: 0.1);
-            },
-            itemCount: choices.length,
-          )
-        ),
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SizedBox(height: 0.1);
+                  },
+                  itemCount: choices.length,
+                )
+              ),
+            )
+          ),
+          Padding(
+            padding: EdgeInsets.all(15),
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              child: LinearProgressIndicator(
+                backgroundColor: Colors.grey,
+                valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue),
+                minHeight: 30,
+                value: index/questionItem.length,
+              )
+            )
+          ),
+        ]
       )
     );
   }
