@@ -48,3 +48,8 @@ Web アプリで覚える！祇園精舎
 ## Known Issues/Bugs
 
 - トップページの GitHub へのボタンが効かない．(デバッグモードでは動いてた)
+- iOS のブラウザ上ではずんだもんの画像が半透明にならない
+
+## スクリーンショット
+
+![image](https://user-images.githubusercontent.com/81549868/210519084-4506844d-3950-4d44-b017-e41d841e2c5c.png)
