@@ -42,11 +42,11 @@ class Result extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.5,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    // colorFilter: ColorFilter.mode(
-                    //   const Color(0xFFFAFAFA).withOpacity(0.4),
-                    //   BlendMode.dstATop
-                    // ),
-                    opacity: 0.4,
+                    colorFilter: ColorFilter.mode(
+                      const Color(0xFFFAFAFA).withOpacity(0.4),
+                      BlendMode.dstATop
+                    ),
+                    // opacity: 0.4,
                     image: AssetImage(bgImagePath),
                     alignment: Alignment.bottomRight,
                     fit: BoxFit.contain,

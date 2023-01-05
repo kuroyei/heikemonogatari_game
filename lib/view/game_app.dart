@@ -20,14 +20,14 @@ class GameApp extends StatelessWidget {
             child: Container(
               width: MediaQuery.of(context).size.width * 0.5,
               height: MediaQuery.of(context).size.height * 0.5,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  // colorFilter: ColorFilter.mode(
-                  //   const Color(0xFFFAFAFA).withOpacity(0.4),
-                  //   BlendMode.dstATop
-                  // ),
-                  opacity: 0.4,
-                  image: AssetImage("assets/bg-game_app.png"),
+                  colorFilter: ColorFilter.mode(
+                    const Color(0xFFFAFAFA).withOpacity(0.4),
+                    BlendMode.dstATop
+                  ),
+                  // opacity: 0.4,
+                  image: const AssetImage("assets/bg-game_app.png"),
                   alignment: Alignment.bottomLeft,
                   fit: BoxFit.contain,
                 )
